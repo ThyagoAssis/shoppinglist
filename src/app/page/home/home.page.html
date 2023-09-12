@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+
+<ion-content [fullscreen]="true">
+<!--   <ion-searchbar [debounce]="1000" (ionChange)="captura($event)" mode='ios' placeholder="Pesquisar" color=""></ion-searchbar> -->
+  
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col>
+        <ion-list>      
+          <ion-item-sliding  *ngFor="let produto of listaProdutos">
+    
+          <ion-item (click)="actionMetod(produto)">
+            <!--Bolinha Branca-->
+            <ion-icon name="radio-button-off" *ngIf="!produto.status"></ion-icon>
+            <ion-label *ngIf="!produto.status"><strong>Produto:</strong> {{produto.produto}} </ion-label>
+            <ion-label *ngIf="!produto.status"><strong>Quant:</strong>  {{produto.quantidade}}</ion-label>
+    
+            <!--Bolinha Verde-->
+            <ion-icon name="checkmark-circle" color="success" *ngIf="produto.status"></ion-icon>
+            <ion-label *ngIf="produto.status"><del><strong>Produto:</strong> {{produto.produto}} </del></ion-label>
+            <ion-label *ngIf="produto.status"><del><strong>Quant:</strong> {{produto.quantidade}}</del></ion-label>
+          </ion-item>
+    
+          <ion-item-options>
+            
+            <ion-item-option  color="danger" (click)="deletar(produto.id)">
+              <ion-icon name="trash-outline"></ion-icon>          
+            </ion-item-option>
+            
+            <ion-item-option  color="success" [routerLink]="['/footer/form',produto.id]">
+              <ion-icon name="pencil-outline"></ion-icon>
+            </ion-item-option>
+    
+          </ion-item-options>
+    
+          </ion-item-sliding>
+    
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+
+
+    
+  
+    <!--Botão Flutuante-->
+   <!--  <ion-fab horizontal="end" vertical="bottom">
+      <ion-fab-button (click)="alertando()">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+    
+</ion-content>

@@ -1,0 +1,20 @@
+<app-header></app-header>
+
+<ion-content>
+    
+  <form #form="ngForm" (ngSubmit)="update(form)">
+
+    <ion-item>
+      <ion-label>Item:</ion-label>
+      <ion-input type="text" name="produto" [ngModel]="produto.produto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Quantidade:</ion-label>
+      <ion-input type="text" name="quantidade" [ngModel]="produto.quantidade"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" color="success" expand="block">Atualizar</ion-button>
+  </form>
+
+</ion-content>
